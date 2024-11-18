@@ -1,0 +1,34 @@
+-- Clientes
+
+--  Insert Customer (Registro)
+
+	DELIMITER //
+	CREATE PROCEDURE AddCustomer(
+		IN name_customer VARCHAR(100),
+		IN lastname_customer VARCHAR(100),
+		IN email_customer VARCHAR(100),
+		IN password_customer VARCHAR(255)
+	)
+	BEGIN
+		INSERT INTO Customer(name, lastname, email, password) 
+		VALUES (name_customer, lastname_customer, email_customer,password_customer);
+	END //
+
+	DELIMITER ;
+    
+  
+
+-- Obtener el id del Cliente y para iniciar Sesión
+
+	DELIMITER //
+	CREATE PROCEDURE Login(
+		IN email_customer VARCHAR(100),
+		IN password_customer VARCHAR(255)
+	)
+	BEGIN
+		SELECT id_customer FROM Customer
+		WHERE email = email_customer
+        AND password = password_customer;
+	END //
+
+	DELIMITER ;

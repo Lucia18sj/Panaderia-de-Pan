@@ -1,0 +1,152 @@
+--Insert Product
+
+    DELIMITER //
+
+    CREATE PROCEDURE AddProduct(
+        IN product_name VARCHAR(100),
+        IN price_p DECIMAL(10,2),
+        IN stock_p INT,
+        IN stock_min_p INT,
+        IN category_name VARCHAR(100),
+        IN description TEXT,
+        IN image_p VARCHAR(255)
+    )
+    BEGIN 
+        DECLARE category_id INT;
+        DECLARE product_id INT;
+
+        SELECT id_category INTO category_id
+        FROM Category
+        WHERE category = category_name;
+
+        INSERT INTO Product(id_category, product, price, description, image_url)
+        VALUES (category_id, product_name, price_p, description, image_p);
+
+        SET product_id = LAST_INSERT_ID();
+
+        INSERT INTO Inventory (id_product, stock, stock_min)
+        VALUES (product_id, stock_p, stock_min_p);
+    END //
+
+    DELIMITER ;
+
+--Get One Product
+
+    DELIMITER //
+
+    CREATE PROCEDURE GetOneProduct(
+        IN product_id INT
+    )
+    BEGIN
+        SELECT id_product, product, price, description, image_url
+        FROM Product
+        WHERE id_product = product_id;
+    END //
+
+DELIMITER ;
+
+--Get All Products para la tabla de Productos
+ 
+    DELIMITER //
+
+    CREATE PROCEDURE GetProducts()
+    BEGIN 
+        SELECT id_product, product, category, price, stock, stock_min
+        FROM Product, Category, Inventory
+        WHERE Product.id_product = Inventory.id_product 
+        AND Category.id_category = Product.id_category
+        AND is_active = 1;
+    END //
+
+    DELIMITER ;
+
+--GetProducts todas las cards
+
+    DELIMITER //
+
+    CREATE PROCEDURE GetProductsCards()
+    BEGIN
+        SELECT id_product, product, price, description, image_url
+        FROM Product
+        WHERE id_category = category_id
+        AND is_active = 1;
+    END //
+
+    DELIMITER ;
+
+--Get Products por Category
+
+    DELIMITER //
+
+    CREATE PROCEDURE GetProductsCategory(
+        IN category_name VARCHAR(100)
+    )
+    BEGIN
+        DECLARE category_id INT; 
+        
+        SELECT id_category INTO category_id
+        FROM Category
+        WHERE category = category_name;
+        
+        SELECT product, price, description, image_url
+        FROM Product
+        WHERE id_category = category_id
+        AND is_active = 1;
+    END //
+
+    DELIMITER ;
+
+--Update One Product
+
+    DELIMITER //
+
+CREATE PROCEDURE UpdateProduct(
+    IN product_id INT, 
+    IN new_product_name VARCHAR(100),
+    IN new_price DECIMAL(10,2), 
+    IN new_description TEXT,
+    IN new_image_url VARCHAR(255),
+    IN new_category_name VARCHAR(100),
+    IN new_stock INT,
+    IN new_stock_min INT
+)
+BEGIN
+    DECLARE category_id INT; 
+    
+    SELECT id_category INTO category_id
+    FROM Category
+    WHERE category = new_category_name;
+
+    UPDATE Product
+    SET 
+        product = new_product_name,
+        price = new_price,
+        description = new_description,
+        image_url = new_image_url,
+        id_category = category_id
+    WHERE id_product = product_id;
+
+    UPDATE Inventory
+    SET 
+        stock = new_stock,
+        stock_min = new_stock_min
+        WHERE id_product = product_id;
+    END //
+
+    DELIMITER ;
+
+--Delete One Product
+
+    DELIMITER //
+
+    CREATE PROCEDURE DeactivateProduct(
+        IN product_id INT
+    )
+    BEGIN
+    
+        UPDATE Product
+        SET is_active = 0
+        WHERE id_product = product_id;
+    END //
+
+    DELIMITER ;

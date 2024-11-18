@@ -1,0 +1,102 @@
+CREATE database panaderiapan;
+USE panaderiapan;
+
+CREATE TABLE Customer (
+    id_customer INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+	lastname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Tabla de Direcciones
+CREATE TABLE Address (
+    id_address INT AUTO_INCREMENT PRIMARY KEY,
+    id_customer INT NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(50) NOT NULL,
+    postcode VARCHAR(10) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    address_type ENUM('Casa', 'Trabajo', 'Otro') DEFAULT 'Casa',
+    FOREIGN KEY (id_customer) REFERENCES Customer(id_customer)
+);
+
+-- Tabla de Categorías de Productos
+CREATE TABLE Category (
+    id_category INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(50) NOT NULL
+);
+
+-- Tabla de Productos (Panes)
+CREATE TABLE Product (
+    id_product INT AUTO_INCREMENT PRIMARY KEY,
+    id_category INT NOT NULL,
+    product VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(255),
+    is_active TINYINT(1) DEFAULT 1,
+    FOREIGN KEY (id_category) REFERENCES Category(id_category)
+);
+
+-- Tabla de Inventario
+CREATE TABLE Inventory (
+    id_inventory INT AUTO_INCREMENT PRIMARY KEY,
+    id_product INT NOT NULL,
+    stock INT NOT NULL,
+    stock_min INT NOT NULL,
+    FOREIGN KEY (id_product) REFERENCES Product(id_product)
+);
+
+-- Tabla de Ventas
+CREATE TABLE Sale (
+    id_sale INT AUTO_INCREMENT PRIMARY KEY,
+    id_customer INT NOT NULL,
+    sale_date DATETIME NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    status ENUM('Pendiente', 'Completado', 'Cancelado') DEFAULT 'Pendiente',
+    FOREIGN KEY (id_customer) REFERENCES Customer(id_customer)
+);
+
+-- Tabla de Detalle de Ventas
+CREATE TABLE SaleDetail (
+    id_saleDetail INT AUTO_INCREMENT PRIMARY KEY,
+    id_sale INT NOT NULL,
+    id_product INT NOT NULL,
+    amount INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_sale) REFERENCES Sale(id_sale),
+    FOREIGN KEY (id_product) REFERENCES Product(id_product)
+);
+
+-- Tabla de Envíos
+CREATE TABLE Send (
+    id_send INT AUTO_INCREMENT PRIMARY KEY,
+    id_sale INT NOT NULL,
+    id_address INT NOT NULL,
+    status_send ENUM('Pendiente', 'En camino', 'Entregado') DEFAULT 'Pendiente',
+    send_date DATETIME,
+    FOREIGN KEY (id_sale) REFERENCES Sale(id_sale),
+    FOREIGN KEY (id_address) REFERENCES Address(id_address)
+);
+
+-- Tabla de Pagos
+CREATE TABLE Payment (
+    id_payment INT AUTO_INCREMENT PRIMARY KEY,
+    id_sale INT NOT NULL,
+    payment_method VARCHAR(30) NOT NULL,
+    payment_status ENUM('Pendiente', 'Completado', 'Fallido') DEFAULT 'Pendiente',
+    payment_date DATETIME NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_sale) REFERENCES Sale(id_sale)
+);
+
+-- Tabla de Tarjetas 
+CREATE TABLE Card (
+    id_card INT AUTO_INCREMENT PRIMARY KEY,
+    id_customer INT NOT NULL,
+    name_owner VARCHAR(255) NOT NULL,
+    card_type ENUM('Visa', 'MasterCard', 'Amex') NOT NULL,
+    last_digits VARCHAR(4) NOT NULL,
+    FOREIGN KEY (id_customer) REFERENCES Customer(id_customer)
+);

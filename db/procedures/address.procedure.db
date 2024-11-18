@@ -1,0 +1,80 @@
+use panaderiapan
+
+-- Direccion
+
+-- Insert Address
+
+	DELIMITER //
+
+	CREATE PROCEDURE AddAddress(
+		IN id_customer_proc INT,
+		IN contact_name_proc VARCHAR(100),
+		IN postcode_proc VARCHAR(10),
+		IN state_proc VARCHAR(50),
+		IN city_proc VARCHAR(50),
+		IN address_proc VARCHAR(100),
+		IN contact_telephone_proc VARCHAR(20),
+		IN address_type_proc VARCHAR(10),
+		IN info_proc TEXT
+	)
+	BEGIN
+		INSERT INTO Address (id_customer, contact_name, postcode, state, city, address, Contact_telephone, address_type, info) 
+		VALUES(id_customer_proc, contact_name_proc, postcode_proc, state_proc, city_proc, address_proc, contact_telephone_proc, address_type_proc,info_proc);
+	END //
+
+	DELIMITER ;
+    
+-- Get All Address for Customer
+
+	DELIMITER //
+
+	CREATE PROCEDURE GetCustomerAddresses(
+		IN id_customer_proc INT
+	)
+	BEGIN
+		SELECT 
+			address AS Address,
+			postcode AS PostalCode,
+			state AS State,
+			city AS City,
+			contact_name AS ContactName,
+			Contact_telephone AS ContactPhone
+		FROM Address
+		WHERE id_customer = id_customer_proc;
+	END //
+
+	DELIMITER ;
+    
+    -- Upadte Address
+		DELIMITER //
+
+	CREATE PROCEDURE UpdateAddress(
+		IN id_address_proc INT,
+		IN contact_name_proc VARCHAR(100),
+		IN postcode_proc VARCHAR(10),
+		IN state_proc VARCHAR(50),
+		IN city_proc VARCHAR(50),
+		IN address_proc VARCHAR(100),
+		IN contact_telephone_proc VARCHAR(20),
+		IN address_type_proc VARCHAR(10),
+		IN info_proc TEXT
+	)
+	BEGIN
+		UPDATE Address
+		SET 
+			contact_name = contact_name_proc,
+			postcode = postcode_proc,
+			state = state_proc,
+			city = city_proc,
+			address = address_proc,
+			Contact_telephone = contact_telephone_proc,
+			address_type = address_type_proc,
+			info = info_proc
+		WHERE id_address = id_address_proc;
+	END //
+
+	DELIMITER ;
+    
+-- Delete Address
+	DELETE Address
+    WHERE id_address = ?;

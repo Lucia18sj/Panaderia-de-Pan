@@ -1,0 +1,22 @@
+-- Compras
+
+-- Ver Mis Compras
+	DELIMITER //
+
+	CREATE PROCEDURE GetSalesByCustomer(
+		IN id_customer_proc INT
+	)
+	BEGIN
+		SELECT s.id_sale, s.sale_date, s.total, s.status,
+			   sd.id_product, sd.amount, sd.price,
+			   p.product, p.image_url
+		FROM Sale s
+		JOIN SaleDetail sd ON s.id_sale = sd.id_sale
+		JOIN Product p ON sd.id_product = p.id_product
+		WHERE s.id_customer = id_customer_proc
+		ORDER BY s.sale_date DESC;
+	END //
+
+	DELIMITER ;
+    
+    
