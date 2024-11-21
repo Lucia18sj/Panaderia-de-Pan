@@ -11,7 +11,7 @@ customerController.insertCustomer = async (req,res) => {
             name, 
             lastname,
             email,
-            password,
+            password
         })
     }catch(error){
         res.status(500).json({
@@ -19,8 +19,6 @@ customerController.insertCustomer = async (req,res) => {
             data: error
         });
     }
-    
-    
 };
 
 customerController.getOneCustomer = async(req, res) =>{
@@ -38,9 +36,7 @@ customerController.getOneCustomer = async(req, res) =>{
             message: "An error has ocurred",
             error: error
         })
-    }
-    
-    
+    }  
 }
 
 customerController.getAllCustomers = async(req, res) =>{

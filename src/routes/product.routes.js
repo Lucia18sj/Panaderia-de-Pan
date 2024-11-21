@@ -12,4 +12,5 @@ router.delete('/deleteOne/:id_product', productController.DeleteOneProduct);
 //Rutas para las tarjetas 
 router.get('/getOneProductforCard/:id_product', productController.getOneProductforCard);
 router.get('/getAllProductsforCard', productController.getAllProductsforCard);
-export default router
+
+export default router;

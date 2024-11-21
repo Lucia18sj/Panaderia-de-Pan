@@ -138,4 +138,5 @@ productController.DeleteOneProduct = async (req, res) => {
         });
     }
 };
+
 export default productController;

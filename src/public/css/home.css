@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "LemonMilk";
+    src: url("/font/lemonMilk.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Louis";
+    src: url("/font/louisCaffe.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #123D44;
+}
+.superposed-image {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 50%; 
+}
+.carouselExampleAutoplaying {
+    height: 50vh; 
+}
+
+.carousel-item img{
+    height: auto;
+    width: 90%;
+    object-fit: cover;
+}
+.h2{
+    font-family: "LemonMilk", sans-serif;
+    color: #C7EAF0;
+}
