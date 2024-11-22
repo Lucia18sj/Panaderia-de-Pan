@@ -1,0 +1,55 @@
+#add-address-btn {
+    background-color: #915D33;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto; /* Centra el botón si es necesario */
+}
+#popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px; /* Ajusta al tamaño deseado */
+    max-width: 90%; /* Para adaptarse en pantallas pequeñas */
+    z-index: 1000;
+}
+
+#popup-container h3 {
+    font-size: 18px; /* Ajusta el tamaño del texto del título si es necesario */
+}
+
+#popup-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaciado entre los campos del formulario */
+}
+
+#popup-container input,
+#popup-container select,
+#popup-container textarea {
+    width: 100%; /* Ajusta al tamaño del contenedor */
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#popup-container button {
+    background-color: #915D33;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+
