@@ -4,6 +4,9 @@ import { Router } from "express";
 const router = Router();
 
 router.get('/', homeController.getHome);
+router.get('/login', homeController.login);
+router.get('/register', homeController.register);
+
 
 export default router;
 
