@@ -30,7 +30,8 @@ body {
     width: 90%;
     object-fit: cover;
 }
-.h2{
+h2{
     font-family: "LemonMilk", sans-serif;
     color: #C7EAF0;
+    font-size: 40px;
 }
