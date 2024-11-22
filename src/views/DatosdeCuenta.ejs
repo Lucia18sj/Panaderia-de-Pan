@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería de Pan - Mi Cuenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body background="styles.css">
+    <div class="container-fluid">
+        <div class="row mb-3">
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <div class="container-fluid">
+                    <a class="navbar-brand brand"href=""><img src="PanederiaDePanIcon.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class ="nav-link" href="#">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="header">
+                <h1 style="color: #C7EAF0; font-family: sans-serif;">Datos de la cuenta </h1>
+                <p style="color:#C7EAF0">Página Principal &gt; Mi Cuenta &gt; Datos de la cuenta</p>
+            </div>
+            <div class="card mx-auto" style="max-width: 600px; background-color: #FBE4D5; border-radius: 15px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h2 style="color: #915D33; font-family: 'Roboto', sans-serif;">Contraseña</h2>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <!-- Contraseña actual (ocultada con asteriscos) -->
+                    <p id="password-text" style="margin: 0; color: #6C6C6C; font-size: 18px;">**************</p>
+                    
+                    <!-- Botón para editar -->
+                    <button id="edit-password-btn" style="background: none; border: none; cursor: pointer;">
+                        <img src="edit-icon.png" alt="Editar" style="width: 24px; height: 24px;">
+                    </button>
+                </div>
+            
+                <!-- Campo de entrada oculto por defecto -->
+                <div id="password-input-container" style="margin-top: 15px; display: none;">
+                    <input type="password" id="new-password" class="form-control" placeholder="Nueva contraseña" style="font-size: 16px; border-radius: 8px;">
+                    <button id="save-password-btn" class="btn btn-primary mt-2" style="background-color: #915D33; border: none; border-radius: 8px;">Guardar</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+
+</html>   
+
+<!--Codigo para leer la contraseña cambiada-->>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const editPasswordBtn = document.getElementById("edit-password-btn");
+        const passwordText = document.getElementById("password-text");
+        const passwordInputContainer = document.getElementById("password-input-container");
+        const newPasswordInput = document.getElementById("new-password");
+        const savePasswordBtn = document.getElementById("save-password-btn");
+
+        // Mostrar el campo de entrada al hacer clic en "Editar"
+        editPasswordBtn.addEventListener("click", function () {
+            passwordText.style.display = "none"; // Ocultar la contraseña actual
+            passwordInputContainer.style.display = "block"; // Mostrar el campo de entrada
+            newPasswordInput.focus(); // Focalizar en el input
+        });
+
+        // Guardar nueva contraseña (ejemplo básico, no seguro para producción)
+        savePasswordBtn.addEventListener("click", function () {
+            const newPassword = newPasswordInput.value;
+            if (newPassword) {
+                alert("Nueva contraseña guardada: " + newPassword);
+                passwordText.textContent = "**************"; // Actualizar con un formato seguro
+                passwordText.style.display = "block"; // Mostrar nuevamente el texto
+                passwordInputContainer.style.display = "none"; // Ocultar el campo
+                newPasswordInput.value = ""; // Limpiar el campo de entrada
+            } else {
+                alert("Por favor, ingresa una nueva contraseña.");
+            }
+        });
+    });
+</script>
