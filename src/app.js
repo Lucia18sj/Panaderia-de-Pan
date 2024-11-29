@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import session from 'express-session';
 import homeRoutes from './routes/home.routes.js';
 import productRoutes from './routes/product.routes.js';
 import customerRoutes from './routes/customer.routes.js';
@@ -23,7 +23,12 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
-
+app.use(session({
+    secret: 'secreto_seguro',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure:false}
+}));
 
 app.use('/api/customers',customerRoutes);
 app.use('/api/products',productRoutes);

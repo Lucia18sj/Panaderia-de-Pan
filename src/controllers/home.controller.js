@@ -10,6 +10,9 @@ homeController.login = async (req, res) => {
 homeController.register = async (req, res) => {
     res.render('../src/views/register.ejs');
 };
+homeController.myAccount = async (req, res) => {
+    res.render('../src/views/MiCuenta.ejs');
+};
 
 
 

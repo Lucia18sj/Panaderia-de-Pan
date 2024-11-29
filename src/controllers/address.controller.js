@@ -5,7 +5,8 @@ const addressController = {};
 addressController.insertAddress = async(req,res) => {
     const {name, postcode, state, city, address, telephone, address_type, info} = req.body
     try {
-        const [rows] =  await pool.query('CALL AddAddress(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.params.idcustomer, name, postcode, state, city, address, telephone, address_type, info])
+        const [rows] =  await pool.query('CALL AddAddress(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.params.idcustomer, name, postcode, 
+            state, city, address, telephone, address_type, info])
         res.send({
             id: rows.insertId,
             name, 
@@ -42,7 +43,8 @@ addressController.GetCustomerAddresses = async(req,res) =>{
 addressController.updateOneAddress = async(req,res) => {
     const {address, postcode, state, city, name, telephone, address_type, info} = req.body;
     try {
-        await pool.query('CALL UpdateAddress(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.params.idcustomer,address, postcode, state, city, name, telephone, address_type, info]);
+        await pool.query('CALL UpdateAddress(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.params.idcustomer,address, postcode, state, 
+            city, name, telephone, address_type, info]);
         res.json({
             message: "Address updated successfully",
         });

@@ -35,3 +35,9 @@ h2{
     color: #C7EAF0;
     font-size: 40px;
 }
+.card-img-top{
+    background-color: #123D44;
+    color: whitesmoke;
+    font-family: "Louis", sans-serif;
+    font-size: 20px;
+}
