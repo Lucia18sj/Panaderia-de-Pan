@@ -41,3 +41,20 @@ h2{
     font-family: "Louis", sans-serif;
     font-size: 20px;
 }
+
+
+.card-link {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Mantiene el color original del texto */
+    display: inline-block;
+}
+
+.card {
+    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02); /* Efecto de zoom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
+}
