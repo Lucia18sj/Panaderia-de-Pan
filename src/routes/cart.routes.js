@@ -1,14 +1,11 @@
-import express from "express";
+import { Router } from "express";
 import cartController from "../controllers/cart.controller.js";
 
-const router = express.Router();
+const router = Router();
 
-// Ruta para obtener el carrito
+router.post("/confirm/:idCustomer", cartController.confirmSale);
 router.get("/:idCustomer", cartController.getCart);
-
-// Ruta para actualizar la cantidad en el carrito
-router.post("/", cartController.addToCart);
-router.put('/cart/update/:idCustomer/:idProduct/:change', cartController.updateQuantity);
-router.post('/confirm', cartController.confirmSale);
+router.put("/update/:idCustomer/:idProduct/:change", cartController.updateQuantity);
+router.post("/add", cartController.addToCart);
 
 export default router;

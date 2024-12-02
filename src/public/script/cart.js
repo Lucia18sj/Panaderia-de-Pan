@@ -1,20 +1,18 @@
 async function loadCart() {
-    const customerId = 1; // Cambia esto al ID del cliente actual
+    const customerId = 1;
     try {
         const response = await fetch(`/api/cart/${customerId}`);
         if (!response.ok) throw new Error("Error fetching cart items");
 
         const cartItems = await response.json();
-        console.log("Carrito cargado:", cartItems);  // Verifica los datos del carrito
+        console.log("Carrito cargado:", cartItems);
 
         const cartItemsContainer = document.getElementById("cart-items");
         const totalPriceElement = document.getElementById("total-price");
 
-        // Limpiar el contenedor antes de agregar los productos
         cartItemsContainer.innerHTML = "";
 
         if (cartItems.length === 0) {
-            // Si el carrito está vacío, mostrar un mensaje
             cartItemsContainer.innerHTML = `<p class="empty-cart-message">Tu carrito está vacío.</p>`;
             totalPriceElement.textContent = "$0.00";
             return;
@@ -33,9 +31,7 @@ async function loadCart() {
                     <p class="item-name">${item.product}</p>
                     <p class="item-price">$${item.price.toFixed(2)}</p>
                     <div class="quantity-controls">
-                        <button class="quantity-btn" data-id="${item.id_product}" data-change="-1" onclick="updateQuantity(this)">-</button>
                         <span class="quantity">${item.amount}</span>
-                        <button class="quantity-btn" data-id="${item.id_product}" data-change="1" onclick="updateQuantity(this)">+</button>
                     </div>
                 </div>
                 <p class="item-total">$${item.total.toFixed(2)}</p>
@@ -55,61 +51,28 @@ async function loadCart() {
     }
 }
 
-async function updateQuantity(idProduct, change) {
-    const customerId = 1; // Asumimos que el ID del cliente está configurado
+document.getElementById("checkoutButton").addEventListener("click", async () => {
+    const idCustomer = 1; // Cambia esto para obtener dinámicamente el idCustomer
+
     try {
-        const response = await fetch(`/api/cart/update/${idProduct}/${change}`, {
-            method: 'PUT', // Asegúrate de que estás usando el método correcto
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        // Asegúrate de que la respuesta es JSON
-        if (!response.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-
-        const data = await response.json(); // Esto debería ser un objeto JSON
-        console.log('Cantidad actualizada:', data);
-        loadCart(); // Recargar el carrito después de actualizar la cantidad
-    } catch (error) {
-        console.error('Error al actualizar cantidad:', error);
-    }
-}
-
-
-async function handleCheckout() {
-    const customerId = 1; // Cambia esto por el ID del cliente
-    try {
-        // Realiza la solicitud para crear la preferencia de pago en el backend
-        const response = await fetch('/api/cart/confirm', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ idCustomer: customerId }),
+        // Llamar al endpoint confirmSale con el idCustomer en la URL
+        const response = await fetch(`/api/cart/confirm/${idCustomer}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
         });
 
         const data = await response.json();
-        const preferenceId = data.preferenceId;
 
-        // Cargar el botón de Mercado Pago usando el preferenceId
-        if (preferenceId) {
-            Mercadopago.checkout({
-                preference: {
-                    id: preferenceId
-                },
-                render: {
-                    container: '#checkout-btn-container', // Contenedor donde se mostrará el botón
-                    label: 'Pagar con Mercado Pago',
-                }
-            });
+        if (data.preferenceId) {
+            // Redirigir al usuario a la página de pago de Mercado Pago
+            window.location.href = `https://www.mercadopago.com.mx/checkout/v1/redirect?pref_id=${data.preferenceId}`;
+        } else {
+            alert("Error al crear la preferencia de pago");
         }
     } catch (error) {
-        console.error('Error al procesar la compra:', error);
+        console.error("Error al procesar la compra:", error);
     }
-}
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('buy-button').addEventListener('click', handleCheckout);
