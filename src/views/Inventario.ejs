@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Panadería</title>
+
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #8B4513;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home" style="color: #FFFFFF">
+                <img src="/images/descargar (11).png" alt="Logotipo de la Panadería"
+                    style="width: 110px; height: 60px; margin-left: 50px; margin-right: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home" style="color: #FFFFFF">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nosotros" style="color: #FFFFFF">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contactos" style="color: #FFFFFF">Contactos</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">
+                        <span class="material-icons">search</span>
+                    </button>
+                </form>
+                <form class="d-flex ms-3">
+                    <button class="btn btn-outline-light" type="button">Iniciar Sesión</button>
+                </form>
+                <form class="d-flex ms-3">
+                    <a class="btn btn-outline-light" href="/admin" role="button"> <span
+                        class="material-icons">shopping_cart</span> </a>
+                    </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Tabla de productos -->
+                <div class="table-responsive">
+                    <table class="table-custom w-100">
+                        <thead>
+                            <tr>
+                                <th>Codigo de Barras</th>
+                                <th>Nombre del Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Stock Minimo</th>
+                                <th>Categoria</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% products.forEach(product => { %>
+                            <tr>
+                                <td><%= product.id_product %></td>
+                                <td><%= product.product %></td>
+                                <td><%= product.price %></td>
+                                <td><%= product.stock %></td>
+                                <td><%= product.stock_min %></td>
+                                <td><%= product.category %></td>
+                                <td><%= product.description %></td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/api/products/deleteOne/<%= product.id_product %>" class="btn btn-danger btn-sm">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                        <a href="/api/products/getOne/<%= product.id_product %>" class="btn btn-warning btn-sm">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Botón para agregar producto -->
+                <button class="btn btn-add-product mt-3 d-flex align-items-center" type="button"
+                        data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="material-icons me-2">add_box</i>
+                        <span>Agregar Producto</span>
+                    </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar producto -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/api/products/insert" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="txtproductName" class="form-label">Nombre del Producto</label>
+                                    <input type="text" class="form-control" name="product" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductPrice" class="form-label">Precio</label>
+                                    <input type="number" class="form-control" name="price" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductStock" class="form-label">Stock</label>
+                                    <input type="number" class="form-control" id="txtproductStock" name="stock" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="txtproductMinStock" class="form-label">Stock Mínimo</label>
+                                    <input type="number" class="form-control" id="txtproductMinStock" name="stock_min" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductDescription" class="form-label">Descripción</label>
+                                    <input type="text" class="form-control" id="txtproductDescription" name="description" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductImage" class="form-label">Imagen (URL)</label>
+                                    <input type="url" class="form-control" id="txtproductImage" name="image" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductCategory" class="form-label">Categoría</label>
+                                    <select class="form-control" name="category" required>
+                                        <option value="" disabled selected>Seleccionar Categoría</option>
+                                        <option value="Pan Dulce">Pan Dulce</option>
+                                        <option value="Pan Salado">Pan Salado</option>
+                                        <option value="Pan Integral">Pan Integral</option>
+                                        <option value="Pan Tradicional">Pan Tradicional</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
