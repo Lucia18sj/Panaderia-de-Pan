@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <title>Editar Producto</title>
+    <!-- Aquí puedes incluir los estilos y scripts necesarios -->
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-container">
+                    <h1>Editar Producto</h1>
+                    <form action="/api/products/update/<%= product.id_product %>" method="POST">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="txtproductName" class="form-label">Nombre del Producto</label>
+                                    <input type="text" class="form-control" name="product" value="<%= product.product %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductPrice" class="form-label">Precio</label>
+                                    <input type="number" class="form-control" name="price" value="<%= product.price %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductStock" class="form-label">Stock</label>
+                                    <input type="number" name="stock" class="form-control" value="<%= product.stock %>" required min="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="txtproductMinStock" class="form-label">Stock Mínimo</label>
+                                    <input type="number" class="form-control" id="txtproductMinStock" name="stock_min" value="<%= product.stock_min %>" required min="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductDescription" class="form-label">Descripción</label>
+                                    <input type="text" class="form-control" id="txtproductDescription" name="description" value="<%= product.description %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductImage" class="form-label">Imagen (URL)</label>
+                                    <input type="url" class="form-control" id="txtproductImage" name="image" value="<%= product.image %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtproductCategory" class="form-label">Categoría</label>
+                                    <select class="form-control" name="category" required>
+                                        <option value="" disabled selected>Seleccionar Categoría</option>
+                                        <option value="Pan Dulce">Pan Dulce</option>
+                                        <option value="Pan Salado">Pan Salado</option>
+                                        <option value="Pan Integral">Pan Integral</option>
+                                        <option value="Pan Tradicional">Pan Tradicional</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
