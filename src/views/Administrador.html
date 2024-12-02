@@ -16,69 +16,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Panaderia de Pan</title>
 
-    <style>
-        .button-box {
-            border: 2px solid #fff;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px auto;
-            text-align: center;
-            background-color: #D5BA98;
-            width: 50%;
-        }
-
-        .button-row {
-            margin-bottom: 10px;
-        }
-
-        .container-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 80px);
-        }
-
-        .btn-icon-text {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: Helvetica, sans-serif;
-            justify-content: center;
-            background-color: #D5BA98;
-            color: #4E342E;
-        }
-
-        .btn-icon {
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-        }
-
-        .btn-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            color: #4E342E;
-        }
-
-        .btn-text div {
-            margin-bottom: 10px;
-        }
-
-        .material-icons {
-            margin-right: 20px;
-        }
-
-        .btn-arrow {
-            margin-left: auto;
-            padding-right: 10px;
-        }
-    </style>
 </head>
 
 <body style="background-color: #123D44">
@@ -87,8 +27,8 @@
             <!--Aquí va la navbar-->
             <nav class="navbar navbar-expand-lg" style="background-color: #8B4513;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#" style="color: #FFFFFF">
-                        <img src="../public/images/descargar (11).png" alt="Logotipo de la Panadería"
+                    <a class="navbar-brand" href="/home" style="color: #FFFFFF">
+                        <img src="/images/descargar (11).png" alt="Logotipo de la Panadería"
                             style="width: 110px; height: 60px; margin-left: 50px; margin-right: auto;">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -98,13 +38,13 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#" style="color: #FFFFFF">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/home" style="color: #FFFFFF">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Nosotros.html" style="color: #FFFFFF">Nosotros</a>
+                                <a class="nav-link" href="/nosotros" style="color: #FFFFFF">Nosotros</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Contactos.html" style="color: #FFFFFF">Contactos</a>
+                                <a class="nav-link" href="/contactos" style="color: #FFFFFF">Contactos</a>
                             </li>
                         </ul>
                         <form class="d-flex ms-3" role="search">
@@ -117,8 +57,9 @@
                             <button class="btn btn-outline-light" type="button">Iniciar Sesión</button>
                         </form>
                         <form class="d-flex ms-3">
-                            <a class="btn btn-outline-light" href="Administrador.html" role="button"> <span
+                            <a class="btn btn-outline-light" href="/admin" role="button"> <span
                                 class="material-icons">shopping_cart</span> </a>
+                            </form>
                     </div>
                 </div>
             </nav>
@@ -126,7 +67,7 @@
         <div class="container-center">
             <div class="button-box">
                 <div class="button-row">
-                    <a href="Inventario.html" class="btn btn-light btn-lg w-100 btn-icon-text">
+                    <a href="api/products/inventario" class="btn btn-light btn-lg w-100 btn-icon-text">
                         <span class="material-icons">inventory</span>
                         <div class="btn-text">
                             <div>Inventario</div>
