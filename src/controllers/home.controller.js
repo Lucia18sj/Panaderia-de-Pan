@@ -7,14 +7,16 @@ homeController.getHome = async (req, res) => {
 homeController.login = async (req, res) => {
     res.render('../src/views/login.ejs');
 };
+
 homeController.register = async (req, res) => {
     res.render('../src/views/register.ejs');
 };
+
 homeController.myAccount = async (req, res) => {
-    res.render('../src/views/MiCuenta.ejs');
+    res.render('../src/view/MiCuenta.ejs');
 };
 
-
-
-
+homeController.carrito = async (req, res) => {
+    res.render('../src/views/carrito.ejs');
+};
 export default homeController;

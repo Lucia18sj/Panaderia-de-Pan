@@ -1,3 +1,5 @@
+//product.controller
+
 import {pool} from '../database.js'
 
 const productController = {};
