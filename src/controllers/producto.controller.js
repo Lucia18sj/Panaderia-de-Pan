@@ -82,13 +82,15 @@ productController.getOneProductforCard = async (req,res) =>{
 
 productController.getAllProductsforCard = async (req,res) =>{
     try{
-        const [rows] = await pool.query('CALL GetProducts()')
+        const [rows] = await pool.query('SELECT * FROM Product WHERE is_active = 1');
+        console.log("Productos recuperados: ", rows);
         if(rows.length === 0){
             res.status(404).json({
                 message: 'No Customer found'
             })
+        }else{
+            res.render('Home', { products: rows });
         }
-        res.json(rows[0])
     }catch(error){
         res.status(500).json({
             message: "An error has ocurred",

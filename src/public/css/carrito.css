@@ -10,31 +10,26 @@
     font-weight: normal;
     font-style: normal;
 }
-body{
+
+body, html{
     background-color: #123D44;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     font-family: 'LemonMilk', sans-serif;
     color: #C7EAF0;
+
 }
+
 h1{
     font-family: 'LemonMilk', sans-serif;
-    color: #C7EAF0;
     text-align: center;
 }
 
-
-
-
 .cart-container {
     background-color: #123D44;
-    width: 60%;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
 
@@ -57,29 +52,18 @@ h1{
     width: 80px;
     height: 80px;
     margin-right: 20px;
+    color: #704D31;
 }
 
 .item-details {
     flex-grow: 1;
+    color: #704D31;
 }
 
 .item-name {
     font-weight: bold;
 }
 
-.quantity-controls {
-    display: flex;
-    align-items: center;
-}
-
-.quantity-btn {
-    background-color: #5D919C;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
 
 .item-total {
     font-weight: bold;

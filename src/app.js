@@ -33,25 +33,9 @@ app.use(session({
 
 app.use('/api/customers',customerRoutes);
 app.use('/api/products',productRoutes);
-app.use('/', homeRoutes);
+app.use('/home', homeRoutes);
 app.use('/login' , homeRoutes);
 app.use('/register' , homeRoutes);
 app.use('/api/cart', cartRoutes);
-
-app.get('/success', (req, res) => {
-    // Manejar pago exitoso
-    res.send("¡Pago exitoso!");
-});
-
-app.get('/failure', (req, res) => {
-    // Manejar pago fallido
-    res.send("Pago fallido.");
-});
-
-app.get('/pending', (req, res) => {
-    // Manejar pago pendiente
-    res.send("Pago pendiente.");
-});
-
 
 export default app;

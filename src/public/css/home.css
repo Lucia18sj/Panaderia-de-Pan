@@ -35,6 +35,11 @@ h2{
     color: #C7EAF0;
     font-size: 40px;
 }
+.card{
+    width: 15rem;
+    margin: auto;
+
+}
 .card-img-top{
     background-color: #123D44;
     color: whitesmoke;
@@ -44,17 +49,58 @@ h2{
 
 
 .card-link {
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: inherit; /* Mantiene el color original del texto */
+    text-decoration: none;
+    color: inherit; 
     display: inline-block;
 }
 
 .card {
-    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+    cursor: pointer; 
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: scale(1.02); /* Efecto de zoom */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
+    transform: scale(1.02); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+header {
+    background: #704D31;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5% 1.5%;
+    border-bottom: var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  
+  header .navbar a:hover {
+    color: var(--main-color);
+    border-bottom: 1rem solid var(--main-color);
+    padding-bottom: .5rem;
+  }
+
+  header .icons div {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+  }
+  header .icons a{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+  }
+  
+  header .icos div:hover {
+    color: var(--main-color);
+  }

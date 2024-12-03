@@ -15,9 +15,9 @@ const cartController = {};
 
     cartController.getCart = async (req, res) => {
         const { idCustomer } = req.params;
-    
         try {
             const [rows] = await pool.query("CALL GetCart(?)", [idCustomer]);
+    
             res.render('carrito', {
                 cartItems: rows[0] || [],
                 idCustomer,
@@ -27,6 +27,7 @@ const cartController = {};
             res.status(500).send("Error al obtener el carrito");
         }
     };
+    ;
 
 
     cartController.updateQuantity = async (req, res) => {

@@ -28,18 +28,15 @@
     <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1731965711/logo_zremz9.png" width="20%" height="20%">
 
     <nav class="navbar">
-      <a href="/">Home</a>
-      <a href="">Nosotros</a>
-      <a href="">Contacto</a>
+        <a href="/">Home</a>
+        <a href="">Nosotros</a>
+        <a href="">Contacto</a>
     </nav>
     <div class="icons">
-      <a href="/login">Iniciar Sesion</a>
-      <a href="">
-        <div class="fas fa-search"></div>
-      </a>
-      <div class="fas fa-shopping-cart"></div>
-      <div class="fas fa-bars"></div>
-      <a  href="/car">Carrito</a>
+        <a href="/login">Iniciar Sesion</a>
+        <a href=""><div class="fas fa-search"></div></a>
+        <div class="fas fa-shopping-cart"></div>
+        <div class="fas fa-bars"></div>
     </div>
   </header>
   <div class="row">
@@ -122,6 +119,31 @@
         </div>
       </div>
     </a>
+  </div>
+  <div class="row" id="loMasDestacado">
+
+  </div>
+  <div class="row" id="video">
+    
+  </div>
+  <div class="row" id="galeria">
+
+  </div>
+  <div class="row" id="Productos" style="justify-content: center;">
+    <% products.forEach(product => { %> <!-- Recorremos los productos -->
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <!-- Card de cada producto -->
+          <div class="card">
+              <img src="<%= product.image_url %>" class="card-img-top" alt="<%= product.product %>">
+              <div class="card-body">
+                  <h5 class="card-title"><%= product.product %></h5>
+                  <p class="card-text">$<%= product.price %></p>
+                  <p class="card-text"><%= product.description %></p>
+                  <a href="/carrito/add/<%= product.id_product %>" class="btn btn-primary">Agregar al Carrito</a>
+              </div>
+          </div>
+      </div>
+    <% }) %>
   </div>
 </body>
 
