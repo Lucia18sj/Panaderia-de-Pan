@@ -178,4 +178,7 @@ h2{
   header .icos div:hover {
     color: var(--main-color);
   }
-  
+  h2{
+    font-family: 'Louis',sans-serif;
+    color: #F0DED0 !important;
+  }

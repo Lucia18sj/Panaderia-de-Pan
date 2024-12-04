@@ -11,7 +11,7 @@
     font-style: normal;
 }
 body {
-    background-color: #123D44;
+    background-color: #123D44 !important;
 }
 .superposed-image {
     position: absolute;
@@ -32,16 +32,13 @@ body {
 }
 h2{
     font-family: "LemonMilk", sans-serif;
-    color: #C7EAF0;
+    color: #C7EAF0 !important;
     font-size: 40px;
+    margin-left: 25px;
 }
-.card{
-    width: 15rem;
-    margin: auto;
 
-}
 .card-img-top{
-    background-color: #123D44;
+    
     color: whitesmoke;
     font-family: "Louis", sans-serif;
     font-size: 20px;
@@ -55,6 +52,8 @@ h2{
 }
 
 .card {
+    width: 15rem;
+    margin: auto;
     cursor: pointer; 
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -64,43 +63,22 @@ h2{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-header {
-    background: #704D31;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5% 1.5%;
-    border-bottom: var(--border);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  header .navbar a {
-    margin: 0 1rem;
-    font-size: 1.4rem;
-    color: #fff;
-  }
-  
-  header .navbar a:hover {
-    color: var(--main-color);
-    border-bottom: 1rem solid var(--main-color);
-    padding-bottom: .5rem;
-  }
 
-  header .icons div {
-    color: #fff;
-    cursor: pointer;
-    font-size: 2.5rem;
-    margin-left: 2rem;
-  }
-  header .icons a{
-    font-size: 2em;
-    color: #fff;
-    text-align: center;
-  }
-  
-  header .icos div:hover {
-    color: var(--main-color);
-  }
+h3{
+    font-family: "LemonMilk", sans-serif;
+    color: #5D919C !important;
+    font-size: 40px;
+    padding: 5px;
+    margin-left: 25px;
+}
+p{
+    font-family: "Louis", sans-serif;
+    font-size: 25px;
+    color: #F0DED0;
+}
+
+.container{
+    width: 90%;
+    align-items: center;
+    display: flex;
+}

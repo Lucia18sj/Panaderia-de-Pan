@@ -57,22 +57,44 @@ customerController.getAllCustomers = async(req, res) =>{
     
 }
 
-customerController.getCustomerId = async(req,res) =>{
-    const {email, password} = req.body
-    try{
-        const [rows] =  await pool.query('CALL Login(?, ?)', [email, password])
+customerController.getCustomerId = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const [rows] = await pool.query('CALL Login(?, ?)', [email, password]);
+
         if (rows[0].length === 0) {
             return res.status(401).json({ message: 'Email o contraseña incorrectos' });
         }
+
         const customerId = rows[0][0].id_customer;
-        res.render('/myAccount/' + customerId);
-    }catch(error){
+        const name = rows[0][0].name; 
+        const lastname = rows[0][0].lastname; 
+        req.session.customerId = customerId;
+        req.session.name = name;
+        req.session.email = email;
+        req.session.lastname = lastname;
+
+        res.redirect(`/api/products`);
+    } catch (error) {
         res.json({
-            message:"An error has ocurred",
-            data:error
+            message: "An error has occurred",
+            data: error
         });
     }
-}
+
+};
+
+
+
+customerController.getIdCustomer = async(req,res)=>{
+    const customerId = req.session.id_customer;
+    if (req.session.id_customer) {
+        res.render('navBar', {customerId});
+        res.json({ id_customer: req.session.id_customer});
+    } else {
+        res.status(401).json({ message: 'Not logged in' });
+    }
+};
 
 
 export default customerController;

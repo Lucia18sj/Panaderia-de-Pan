@@ -21,6 +21,9 @@ const cartController = {};
             res.render('carrito', {
                 cartItems: rows[0] || [],
                 idCustomer,
+                name: req.session.name || 'Invitado',
+                email: req.session.email,
+                lastname: req.session.lastname,
             });
         } catch (error) {
             console.error("Error al obtener el carrito:", error);

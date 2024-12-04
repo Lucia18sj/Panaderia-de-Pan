@@ -1,0 +1,23 @@
+
+footer {
+    background-color: #5D919C;
+    padding: 10px;
+    text-align: center;
+  }
+  .Redes {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .Redes a {
+    display: inline-block;
+    min-height: 40px;
+    width: 40px;
+    background-color: #00C3FF;
+    margin: 0 15px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 20px;
+  }
