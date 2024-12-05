@@ -1,3 +1,4 @@
+import { pool } from '../database.js';
 const homeController = {};
 
 
@@ -22,7 +23,12 @@ homeController.logout =  async(req,res) =>{
     });
 };
 homeController.register = async (req, res) => {
-    res.render('Register');
+    return res.render('Register', {
+        name: req.session.name || 'Invitado',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
 };
 
 homeController.myAccount = async (req, res) => {
@@ -34,14 +40,6 @@ homeController.myAccount = async (req, res) => {
     });
 };
 
-homeController.carrito = async (req, res) => {
-    return res.render('carrito', {
-        name: req.session.name || 'Invitado',
-        customerId: req.session.customerId || null,
-        email: req.session.email,
-        lastname: req.session.lastname,
-    });
-};
 
 homeController.DatosMiCuenta = async (req, res) => {
     

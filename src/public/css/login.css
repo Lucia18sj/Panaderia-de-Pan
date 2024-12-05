@@ -115,69 +115,8 @@ h2{
   .register-link p a:hover {
     text-decoration: underline;
   }
-  footer {
-    background-color: #5D919C;
-    padding: 10px;
-    text-align: center;
-  }
-  .Redes {
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .Redes a {
-    display: inline-block;
-    min-height: 40px;
-    width: 40px;
-    background-color: #00C3FF;
-    margin: 0 15px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: #FFFFFF;
-    font-size: 20px;
-  }
 
-  header {
-    background: #704D31;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5% 1.5%;
-    border-bottom: var(--border);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  header .navbar a {
-    margin: 0 1rem;
-    font-size: 1.4rem;
-    color: #fff;
-  }
-  
-  header .navbar a:hover {
-    color: var(--main-color);
-    border-bottom: 1rem solid var(--main-color);
-    padding-bottom: .5rem;
-  }
-
-  header .icons div {
-    color: #fff;
-    cursor: pointer;
-    font-size: 2.5rem;
-    margin-left: 2rem;
-  }
-  header .icons a{
-    font-size: 2em;
-    color: #fff;
-    text-align: center;
-  }
-  
-  header .icos div:hover {
-    color: var(--main-color);
-  }
+ 
   h2{
     font-family: 'Louis',sans-serif;
     color: #F0DED0 !important;

@@ -20,7 +20,7 @@ const cartController = {};
     
             res.render('carrito', {
                 cartItems: rows[0] || [],
-                idCustomer,
+                customerId: idCustomer,
                 name: req.session.name || 'Invitado',
                 email: req.session.email,
                 lastname: req.session.lastname,
@@ -30,7 +30,6 @@ const cartController = {};
             res.status(500).send("Error al obtener el carrito");
         }
     };
-    ;
 
 
     cartController.updateQuantity = async (req, res) => {

@@ -45,127 +45,130 @@
 
 <body>
   <%- include('partials/navBar', { name: name, customerId: customerId, lastname: lastname}) %>
-  
-  <div class="row mb-5">
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-      <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732153593/Title_qgvwqx.png"
-        class="superposed-image">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home_tvjcrx.png"
-            class="d-block w-100">
-        </div>
-        <div class="carousel-item">
-          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home3_brtol2.png"
-            class="d-block w-100">
-        </div>
-        <div class="carousel-item">
-          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138334/home2_cqyxe1.png"
-            class="d-block w-100">
-        </div>
-        <div class="carousel-item">
-          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home4_v9x40u.png"
-            class="d-block w-100">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-  <div class="row">
-    <h2>Categorías</h2>
-  </div>
-  <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
-    <a href="./MiCuenta.ejs" class="card-link">
-      <div class="card-img-top" style="width: 15rem;">
-        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Dulce_sgccld.png"
-          class="card-img-top" alt="Categoría: Pan Dulce">
-        <div class="card-body text-center">
-          <p class="card-text">Pan Dulce</p>
-          
-        </div>
-      </div>
-    </a>
-    <a href="/products/pandulce" class="card-link">
-      <div class="card-img-top" style="width: 15rem;">
-        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Integral_idexya.png"
-          class="card-img-top" alt="Categoría: Pan Dulce">
-        <div class="card-body text-center">
-          <p class="card-text">Pan Integral</p>
-        </div>
-      </div>
-    </a>
-    <a href="/products/pandulce" class="card-link">
-      <div class="card-img-top" style="width: 15rem;">
-        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Salado_pzbufh.png"
-          class="card-img-top" alt="Categoría: Pan Dulce">
-        <div class="card-body text-center">
-          <p class="card-text">Pan Salado</p>
-
-        </div>
-      </div>
-    </a>
-    <a href="/products/pantradicional" class="card-link">
-      <div class="card-img-top" style="width: 15rem;">
-        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Tradicional_inqduw.png"
-          class="card-img-top" alt="Categoría: Pan Dulce">
-        <div class="card-body text-center">
-          <p class="card-text">Pan Tradicional</p>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="row mb-5" style="background-color: #F0DED0;">
-    <h3> Lo Más Destacado</h3>
-    <div class="container mt-5">
-      <div class="row flex-nowrap overflow-auto" style="gap: 1rem;">
-        <% products.forEach(product => { %>
-          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
-              <div class="card" style="background-color: #5D919C;">
-                  <img src="<%= product.image_url %>" class="card-img-top" alt="<%= product.product %>">
-                  <div class="card-body">
-                      <h5 class="card-title"><%= product.product %></h5>
-                      <p class="card-text">$<%= product.price %></p>
-                      <a href="/api/cart/<%= product.id_product %>" class="btn btn-warning">Agregar al Carrito</a>
-                  </div>
-              </div>
+  <div class="container-fluid" style="width: 100%;">
+    <div class="row mb-5">
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732153593/Title_qgvwqx.png"
+          class="superposed-image">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home_tvjcrx.png"
+              class="d-block w-100">
           </div>
-        <% }) %>
+          <div class="carousel-item">
+            <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home3_brtol2.png"
+              class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138334/home2_cqyxe1.png"
+              class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home4_v9x40u.png"
+              class="d-block w-100">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733273343/Video_wh3ybp.png">
-  </div>
-  <div class="row mb-5" style="margin: 50px;">
-    <p style=" font-size: 30px;">Desde 2024 endulzamos <br>
-      tus momentos más especiales</p>
-      <hr style="color: #F0DED0; width: 30%;" >
-    <div class="container mb-5">
-        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733264923/galeria_lzccsm.png" width="70%">
-        
-        <p style="margin: 30px;">Nuestra pasión por la <br> 
-          repostería nos ha inspirado a <br>
-          hornear el mejor pan, crear <br>
-          pasteles únicos, servir el <br>
-          mejor café pero sobre todo a <br>
-          reinventarnos e innovar <br>
-          todos los días.</p>
+    <div class="row">
+      <h2>Categorías</h2>
     </div>
-    <h2>Galería</h2>
-    <div class="container mb-5" style="display: flexbox; justify-content: center;">
-      <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733272549/Galery_ccu03p.png" width="70%">
+    <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+      <a href="./MiCuenta.ejs" class="card-link">
+        <div class="card-img-top" style="width: 15rem;">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Dulce_sgccld.png"
+            class="card-img-top" alt="Categoría: Pan Dulce">
+          <div class="card-body text-center">
+            <p class="card-text">Pan Dulce</p>
+            
+          </div>
+        </div>
+      </a>
+      <a href="/products/pandulce" class="card-link">
+        <div class="card-img-top" style="width: 15rem;">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Integral_idexya.png"
+            class="card-img-top" alt="Categoría: Pan Dulce">
+          <div class="card-body text-center">
+            <p class="card-text">Pan Integral</p>
+          </div>
+        </div>
+      </a>
+      <a href="/products/pandulce" class="card-link">
+        <div class="card-img-top" style="width: 15rem;">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Salado_pzbufh.png"
+            class="card-img-top" alt="Categoría: Pan Dulce">
+          <div class="card-body text-center">
+            <p class="card-text">Pan Salado</p>
+  
+          </div>
+        </div>
+      </a>
+      <a href="/products/pantradicional" class="card-link">
+        <div class="card-img-top" style="width: 15rem;">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732302313/Pan_Tradicional_inqduw.png"
+            class="card-img-top" alt="Categoría: Pan Dulce">
+          <div class="card-body text-center">
+            <p class="card-text">Pan Tradicional</p>
+          </div>
+        </div>
+      </a>
     </div>
+    <div class="row mb-5" style="background-color: #F0DED0;">
+      <h3> Lo Más Destacado</h3>
+      <div class="container mt-5">
+        <div class="row flex-nowrap overflow-auto" style="gap: 1rem;">
+          <% products.forEach(product => { %>
+            <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="background-color: #5D919C;">
+                    <img src="<%= product.image_url %>" class="card-img-top" alt="<%= product.product %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.product %></h5>
+                        <p class="card-text">$<%= product.price %></p>
+                        <a href="/api/cart/<%= product.id_product %>" class="btn btn-warning">Agregar al Carrito</a>
+                    </div>
+                </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733273343/Video_wh3ybp.png">
+    </div>
+    <div class="row mb-5" style="margin: 50px;">
+      <p style=" font-size: 30px;">Desde 2024 endulzamos <br>
+        tus momentos más especiales</p>
+        <hr style="color: #F0DED0; width: 30%;" >
+      <div class="container mb-5">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733264923/galeria_lzccsm.png" width="70%">
+          
+          <p style="margin: 30px;">Nuestra pasión por la <br> 
+            repostería nos ha inspirado a <br>
+            hornear el mejor pan, crear <br>
+            pasteles únicos, servir el <br>
+            mejor café pero sobre todo a <br>
+            reinventarnos e innovar <br>
+            todos los días.</p>
+      </div>
+      <h2>Galería</h2>
+      <div class="container mb-5" style="display: flexbox; justify-content: center;">
+        <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1733272549/Galery_ccu03p.png" width="70%">
+      </div>
+    </div>
+    <%- include('partials/flooter') %>
   </div>
-  <%- include('partials/flooter') %>
+  
+
 
 </body>
 

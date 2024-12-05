@@ -11,12 +11,11 @@
     font-style: normal;
 }
 
-body, html{
+body{
     background-color: #123D44;
     height: 100vh;
-    font-family: 'LemonMilk', sans-serif;
     color: #C7EAF0;
-
+    margin-top: 8%;
 }
 
 h1{
@@ -74,6 +73,8 @@ h1{
     text-align: center;
     margin-top: 30px;
     color: #C7EAF0;
+    font-family: 'LemonMilk', sans-serif;
+    font-size: 20px;
 }
 
 .checkout-btn {
@@ -97,4 +98,9 @@ h1{
     color: #888;
     margin-top: 20px;
 }
-
+button{
+    background-color: #5D919C;
+    color: #F0DED0;
+    padding: 5px;
+    border-radius: 10px;
+}

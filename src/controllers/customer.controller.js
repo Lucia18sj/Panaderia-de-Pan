@@ -73,7 +73,7 @@ customerController.getCustomerId = async (req, res) => {
         req.session.name = name;
         req.session.email = email;
         req.session.lastname = lastname;
-
+        console.log('Sesión después de login:', req.session);
         res.redirect(`/api/products`);
     } catch (error) {
         res.json({
