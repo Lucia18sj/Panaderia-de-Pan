@@ -41,8 +41,13 @@ homeController.myAccount = async (req, res) => {
 };
 
 
-homeController.DatosMiCuenta = async (req, res) => {
-    
+homeController.accountDetails = async (req, res) => {
+    return res.render('DatosdeCuenta', {
+        name: req.session.name || 'Invitado',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
 };
 
 homeController.Direcciones = async (req, res) => {

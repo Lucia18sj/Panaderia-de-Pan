@@ -7,7 +7,7 @@ router.get('/logout', homeController.logout);
 
 router.get('/register', homeController.register);
 router.get('/myAccount/:idCustomer',homeController.myAccount)
-router.get('/Datos', homeController.DatosMiCuenta);
+router.get('/accountDetails/:idCustomer',homeController.accountDetails)
 router.get('/address', homeController.Direcciones);
 
 export default router;

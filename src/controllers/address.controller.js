@@ -40,6 +40,11 @@ addressController.GetCustomerAddresses = async(req,res) =>{
     }
 };
 
+addressController.getOneAddress = async(req,res) =>{
+    const cutomerId = req.params.idAddress;
+
+}
+
 addressController.updateOneAddress = async(req,res) => {
     const {address, postcode, state, city, name, telephone, address_type, info} = req.body;
     try {
@@ -55,3 +60,4 @@ addressController.updateOneAddress = async(req,res) => {
         });
     }
 };
+export default addressController;

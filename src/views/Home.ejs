@@ -134,7 +134,17 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= product.product %></h5>
                         <p class="card-text">$<%= product.price %></p>
-                        <a href="/api/cart/<%= product.id_product %>" class="btn btn-warning">Agregar al Carrito</a>
+                        <!-- Formulario para agregar al carrito -->
+                        <form action="/api/cart/add" method="POST">
+                            <input type="hidden" name="idCustomer" value="<%= customerId %>">
+                            <input type="hidden" name="idProduct" value="<%= product.id_product %>">
+                            <div class="d-flex align-items-center">
+                                <input type="number" name="quantity" min="1" value="1" class="form-control me-2" style="width: 80px;">
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

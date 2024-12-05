@@ -7,7 +7,7 @@ const cartController = {};
 
         try {
             await pool.query("CALL AddToCart(?, ?, ?)", [idCustomer, idProduct, quantity]);
-            res.json({ message: "Product added to cart" });
+            res.redirect(`/api/cart/${idCustomer}`);
         } catch (error) {
             res.status(500).json({ message: "Error adding product to cart", error });
         }
