@@ -58,8 +58,11 @@
     padding-right: 10px;
 }
 
-body {
-    background-color: #123D44;
+#body {
+    background-image: url('/images/Panaderia.jpg'); /* Cambia la URL por la de tu imagen */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -107,7 +110,7 @@ body {
 }
 
 .modal-content {
-    background-color: #123D44;
+    background-color: #1ab7cfa1;
     color: #fff;
 }
 
@@ -127,14 +130,14 @@ body {
 h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #343a40;
+    color: #082f57;
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
 .form-label {
     font-weight: 600;
-    color: #495057;
+    color: #000000;
 }
 
 .form-control {
@@ -163,8 +166,58 @@ h1 {
 }
 
 .form-container {
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.733); /* Fondo blanco semi-transparente */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
 }
+
+label {
+    font-weight: 600;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#mainNavbar {
+    background: linear-gradient(90deg, #8B4513, #4a2c2a);
+    /* Ajusta el ángulo (90deg) y los colores (#4a2c2a y #8b5e57) según tus preferencias */
+    color: white; /* Asegura que el texto sea visible sobre el fondo */
+    border: none; /* Elimina bordes si están presentes */
+}
+
+
+    h2 {
+      font-family: 'Arial', sans-serif;
+      color: #00f1a1;
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .category-btn {
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+        background-color: rgb(6, 252, 100);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px;
+        transition: transform 0.2s;
+      }
+  
+      .category-btn:hover {
+        transform: scale(1.1);
+      }
+  
+      .category-label {
+        text-align: left;
+        color: rgb(5, 255, 151);
+        font-weight: bold;
+        margin-top: 5px;
+      }
