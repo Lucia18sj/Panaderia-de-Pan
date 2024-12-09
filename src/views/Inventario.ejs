@@ -26,9 +26,9 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body>
+<body style="background-color: #123D44" id="body">
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #8B4513;">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/home" style="color: #FFFFFF">
                 <img src="/images/descargar (11).png" alt="Logotipo de la Panadería"
@@ -36,7 +36,7 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
@@ -60,9 +60,10 @@
                     <button class="btn btn-outline-light" type="button">Iniciar Sesión</button>
                 </form>
                 <form class="d-flex ms-3">
-                    <a class="btn btn-outline-light" href="/admin" role="button"> <span
-                        class="material-icons">shopping_cart</span> </a>
-                    </form>
+                    <a class="btn btn-outline-light" href="/admin" role="button"> 
+                        <span class="material-icons">shopping_cart</span> 
+                    </a>
+                </form>
             </div>
         </div>
     </nav>
@@ -96,11 +97,11 @@
                                 <td><%= product.category %></td>
                                 <td><%= product.description %></td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="/api/products/deleteOne/<%= product.id_product %>" class="btn btn-danger btn-sm">
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
+                                        <a href="/api/products/deleteOne/<%= product.id_product %>" class="btn btn-danger">
                                             <i class="material-icons">delete</i>
                                         </a>
-                                        <a href="/api/products/getOne/<%= product.id_product %>" class="btn btn-warning btn-sm">
+                                        <a href="/api/products/getOne/<%= product.id_product %>" class="btn btn-warning">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </div>
@@ -112,10 +113,10 @@
                 </div>
                 <!-- Botón para agregar producto -->
                 <button class="btn btn-add-product mt-3 d-flex align-items-center" type="button"
-                        data-bs-toggle="modal" data-bs-target="#addProductModal">
-                        <i class="material-icons me-2">add_box</i>
+                    data-bs-toggle="modal" data-bs-target="#addProductModal">
+                    <i class="material-icons me-2">add_box</i>
                         <span>Agregar Producto</span>
-                    </button>
+                </button>
             </div>
         </div>
     </div>
