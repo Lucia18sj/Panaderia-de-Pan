@@ -1,6 +1,30 @@
 import { pool } from '../database.js';
 const homeController = {};
 
+homeController.getProductforHome = async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM Product WHERE is_active = 1 LIMIT 12;');
+
+        if (rows.length === 0) {
+            res.status(404).json({
+                message: 'No products found'
+            });
+        } else {
+            res.render('Home', { 
+                products: rows, 
+                name: req.session.name || 'Invitado',
+                customerId: req.session.customerId || null,
+                email: req.session.email,
+                lastname: req.session.lastname,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "An error has occurred",
+            error: error
+        });
+    }
+};
 
 homeController.login = async (req, res) => {
     if (req.session.name && req.session.customerId) {
@@ -19,7 +43,7 @@ homeController.logout =  async(req,res) =>{
         if (err) {
             return res.status(500).send('Failed to log out');
         }
-        res.redirect('/api/products');
+        res.redirect('/');
     });
 };
 homeController.register = async (req, res) => {
@@ -51,6 +75,28 @@ homeController.accountDetails = async (req, res) => {
 };
 
 homeController.Direcciones = async (req, res) => {
-    res.render('Direcciones');
+    res.render('Direcciones', {
+        name: req.session.name || 'Invitado',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
+};
+
+homeController.us =async (req, res) => {
+    res.render('Nosotros', {
+        name: req.session.name || 'Invitado',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
+};
+homeController.contact =async (req, res) => {
+    res.render('Contactos', {
+        name: req.session.name || 'Invitado',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
 };
 export default homeController;

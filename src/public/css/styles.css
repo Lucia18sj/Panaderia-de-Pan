@@ -1,10 +1,30 @@
+@font-face {
+            
+    src: url('font/LemonMilk-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-family:"LemonMilk",sans-serif ;
+}
+@font-face {
+    font-family: "Louis";
+    src: url("/font/louisCaffe.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+h1{
+    font-family: 'LemonMilk', sans-serif;
+    color:  #C7EAF0;
+    font-size: 40px;
+    margin: 35px;
+    text-align: center;
+}
 .button-box {
     border: 2px solid #fff;
     border-radius: 15px;
     padding: 20px;
     margin: 20px auto;
     text-align: center;
-    background-color: #D5BA98;
+    background-color: #F0DED0;
     width: 50%;
 }
 
@@ -17,6 +37,7 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 80px);
+    margin-top: 80px;
 }
 
 .btn-icon-text {
@@ -25,8 +46,8 @@
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     justify-content: center;
-    background-color: #D5BA98;
-    color: #4E342E;
+    background-color: #F0DED0;
+    color: #915D33;
 }
 
 .btn-icon {
@@ -42,7 +63,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    color: #4E342E;
+    color: #915D33;
 }
 
 .btn-text div {
@@ -64,15 +85,15 @@ body {
 }
 
 .table-custom {
-    background-color: #F5F5DC;
+    background-color: #F0DED0;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1rem;
-    color: #212529;
+    color: #915D33;
 }
 
 .table-custom th {
-    background-color: #8B4513;
+    background-color: #B09077;
     color: white;
     text-align: center;
     padding: 10px;
@@ -88,17 +109,18 @@ body {
 }
 
 .btn-add-product {
-    background-color: #8B4513;
+    background-color: #5D919C;
     color: white;
     border: none;
 }
 
 .btn-add-product:hover {
-    background-color: #A0522D;
+    background-color: #165C6B;
+    color: white;
 }
 
 .modal-content {
-    background-color: #123D44;
+    background-color: #B09077;
     color: #fff;
 }
 
@@ -158,4 +180,12 @@ h1 {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+}
+.form-label{
+    font-family: 'Louis';
+    color: #ffffff;
+}
+.form-control{
+    font-family: 'Louis';
+    color: #ffffff;
 }

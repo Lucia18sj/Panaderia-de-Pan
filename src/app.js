@@ -33,7 +33,7 @@ app.use(session({
 }));
 
 // Rutas
-app.use('/api/admin', administratorRoutes);
+app.use('/api/administrator', administratorRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/', homeRoutes);

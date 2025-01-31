@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "LemonMilk";
+    src: url("/font/lemonMilk.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Louis";
+    src: url("/font/louisCaffe.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+.container-fluid{
+    margin-top: 100px;
+}
+h1{
+    color: #915D33; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-size: 100px; 
+    font-family: 'LemonMilk', sans-serif;
+}
+.icon{
+    margin: 10px 0;
+}
+.icon a {
+    text-decoration: none; 
+    color: #C7EAF0;
+    font-size: 3rem; 
+    font-family: 'Louis'; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+.icon a:hover {
+    color: #F0DED0; /* Cambiar color al pasar el cursor */
+}
+p{
+    font-family: 'Louis';
+}

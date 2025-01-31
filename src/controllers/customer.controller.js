@@ -10,7 +10,7 @@ customerController.insertCustomer = async (req,res) => {
     }
     try{
         const [rows] =  await pool.query('CALL AddCustomer(?, ?, ?, ?)', [name, lastname, email, password])
-        res.render('../src/views/login.ejs');
+        res.redirect('/login');
     }catch(error){
         res.status(500).json({
             message: "Ocurrio un Error al registrar un nuevo usuario",
@@ -74,14 +74,16 @@ customerController.getCustomerId = async (req, res) => {
         req.session.email = email;
         req.session.lastname = lastname;
         console.log('Sesión después de login:', req.session);
-        res.redirect(`/api/products`);
+        if (email === 'panaderia.de.pan@gmail.com') {
+            return res.redirect('/api/administrator');
+        }
+        res.redirect('/');
     } catch (error) {
         res.json({
             message: "An error has occurred",
             data: error
         });
     }
-
 };
 
 

@@ -3,7 +3,12 @@ import { pool } from "../database.js";
 const administratorController = {};
 
 administratorController.administrator = async(req,res) =>{
-    res.render('Administrador');
+    res.render('Administrador', {
+        name: req.session.name || 'Administrador',
+        customerId: req.session.customerId || null,
+        email: req.session.email,
+        lastname: req.session.lastname,
+    });
 }
 
 administratorController.getAllProducts = async (req, res) => {
@@ -12,9 +17,20 @@ administratorController.getAllProducts = async (req, res) => {
         const [rows] = await pool.query('CALL GetProducts()');
         console.log("Datos obtenidos:", rows); 
         if (rows[0].length === 0) {
-            return res.render('Inventario.ejs', { products: [] }); 
+            return res.render('Inventario.ejs', { products: [], 
+                name: req.session.name || 'Administrador',
+                customerId: req.session.customerId || null,
+                email: req.session.email,
+                lastname: req.session.lastname, 
+            }); 
         }
-        return res.render('Inventario.ejs', { products: rows[0] });
+        return res.render('Inventario.ejs', 
+            { products: rows[0],
+            name: req.session.name || 'Administrador',
+            customerId: req.session.customerId || null,
+            email: req.session.email,
+            lastname: req.session.lastname, 
+         });
     } catch (error) {
         console.error("Error al obtener los productos:", error);
         return res.status(500).render('error.ejs', { message: "Error al obtener los productos" });
@@ -40,7 +56,7 @@ administratorController .insertProduct = async (req, res) => {
         const [rows] = await pool.query('CALL AddProduct(?, ?, ?, ?, ?, ?, ?)', [
             product, price, stock, stock_min, category, description, image
         ]);
-        res.redirect('/api/administrator/inventario'); // Redirige a Inventario después de agregar el producto
+        res.redirect('/api/administrator/inventario')
     } catch (error) {
         console.error("Error en insertProduct:", error);
         res.status(500).json({ message: "An error has occurred", error: error.message || error });

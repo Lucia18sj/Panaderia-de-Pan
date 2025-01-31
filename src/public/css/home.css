@@ -38,7 +38,6 @@ h2{
 }
 
 .card-img-top{
-    
     color: whitesmoke;
     font-family: "Louis", sans-serif;
     font-size: 20px;
@@ -50,9 +49,12 @@ h2{
     color: inherit; 
     display: inline-block;
 }
-
+.card-link :hover{
+    transform: scale(1.02); 
+}
 .card {
-    width: 15rem;
+    width: 15rem; 
+    height: 23rem;
     margin: auto;
     cursor: pointer; 
     transition: transform 0.2s, box-shadow 0.2s;
