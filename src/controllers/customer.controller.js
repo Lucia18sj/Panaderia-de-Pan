@@ -74,9 +74,6 @@ customerController.getCustomerId = async (req, res) => {
         req.session.email = email;
         req.session.lastname = lastname;
         console.log('Sesión después de login:', req.session);
-        if (email === 'panaderia.de.pan@gmail.com') {
-            return res.redirect('/api/administrator');
-        }
         res.redirect('/');
     } catch (error) {
         res.json({
