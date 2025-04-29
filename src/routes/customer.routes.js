@@ -5,6 +5,5 @@ import {Router} from "express";
 const routes = Router();
     routes.post('/insertCustomer', customerController.insertCustomer);
     routes.get('/getAllCustomers', customerController.getAllCustomers);
-    routes.get('/getOneCustomer/:idcustomer', customerController.getOneCustomer);
-    routes.post('/login', customerController.getCustomerId);
+    routes.post('/login', customerController.loginCustomer);
 export default routes;

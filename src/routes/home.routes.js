@@ -13,5 +13,6 @@ router.get('/accountDetails/:idCustomer',homeController.accountDetails)
 router.get('/address', homeController.Direcciones);
 router.get('/us', homeController.us);
 router.get('/contact', homeController.contact);
+router.get('/cards',homeController.cards);
 export default router;
 

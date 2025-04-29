@@ -1,43 +1,49 @@
 import {pool} from '../database.js'
 const customerController = {};
 
-customerController.insertCustomer = async (req,res) => {
-    const {name, lastname, email, password, confirmPassword } = req.body
-    if (password !== confirmPassword) {
-        return res.status(400).json({
-            message: "Las contraseñas no coinciden.",
+customerController.insertCustomer = async (req, res) => {
+    const { name, lastname, email, password, role } = req.body;
+    try {
+        const [rows] = await pool.query('CALL RegisterCustomer(?, ?, ?, ?, ?)', [
+            name,
+            lastname,
+            email,
+            password,
+            role
+        ]);
+        res.json({
+            message: "Customer registered successfully",
+            data: rows
         });
-    }
-    try{
-        const [rows] =  await pool.query('CALL AddCustomer(?, ?, ?, ?)', [name, lastname, email, password])
-        res.redirect('/login');
-    }catch(error){
+    } catch (error) {
         res.status(500).json({
-            message: "Ocurrio un Error al registrar un nuevo usuario",
-            data: error
+            message: "An error occurred while registering the customer",
+            error: error
         });
     }
 };
 
-customerController.getOneCustomer = async(req, res) =>{
-    try{
-        const [rows] = await pool.query('SELECT name, lastname, email FROM Customer WHERE id_customer = ?', [req.params.idcustomer])
-        if(rows.length === 0){
-            res.status(404).json({
-                message: "Email o contraseña incorrectos",
-                error: error
+
+customerController.loginCustomer = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const [rows] = await pool.query('CALL LoginCustomer(?, ?)', [
+            email,
+            password
+        ]);
+        if (rows[0].length === 0) {
+            return res.status(401).json({
+                message: "Incorrect email or password"
             });
         }
-        const customerId = rows[0][0].id_customer;
-        req.session.customerId = customerId;
-        res.json({ id_customer: customerId });
-    }catch(error){
+        res.json(rows[0][0]); // Devolvemos solo el primer cliente encontrado
+    } catch (error) {
         res.status(500).json({
-            message: "An error has ocurred",
+            message: "An error occurred during login",
             error: error
-        })
-    }  
-}
+        });
+    }
+};
 
 customerController.getAllCustomers = async(req, res) =>{
     try{
@@ -61,7 +67,7 @@ customerController.getCustomerId = async (req, res) => {
     const { email, password } = req.body;
     try {
         const [rows] = await pool.query('CALL Login(?, ?)', [email, password]);
-
+        console.log("Resultado de la consulta a la BD:", rows);
         if (rows[0].length === 0) {
             return res.status(401).json({ message: 'Email o contraseña incorrectos' });
         }
@@ -73,7 +79,9 @@ customerController.getCustomerId = async (req, res) => {
         req.session.name = name;
         req.session.email = email;
         req.session.lastname = lastname;
+
         console.log('Sesión después de login:', req.session);
+
         res.redirect('/');
     } catch (error) {
         res.json({
@@ -81,6 +89,7 @@ customerController.getCustomerId = async (req, res) => {
             data: error
         });
     }
+
 };
 
 

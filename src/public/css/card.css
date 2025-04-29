@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Louis";
+    src: url("/font/louisCaffe.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+.cards{
+    align-items: center;
+    display: grid;
+}
+.card{
+    padding: 5px;
+    background-color: #5D919C;
+    width: 200px;
+    margin: auto;
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 1em;
+}
+.card :hover{
+    transform: scale(1.02); 
+}
+.card-title{
+    font-family: "Louis", sans-serif;
+    color: #F0DED0;
+    font-size: larger;
+}
+.card-text{
+    font-family: "Louis", sans-serif;
+    color: #F0DED0;
+    font-size: x-large;
+}
+.card .card-img-top{
+    width: 95%;
+}

@@ -8,6 +8,8 @@ import productRoutes from './routes/product.routes.js';
 import customerRoutes from './routes/customer.routes.js';
 import cartRoutes from './routes/cart.routes.js';
 import administratorRoutes from './routes/administrador.routes.js';
+import cors from 'cors';
+
 
 const app = express();
 
@@ -31,6 +33,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+app.use(cors());
 
 // Rutas
 app.use('/api/administrator', administratorRoutes);

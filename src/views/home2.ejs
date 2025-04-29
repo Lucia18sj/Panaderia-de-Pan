@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería de Pan</title>
+</head>
+<body>
+    <nav>
+        <%- include('partials/navBar', { name: name, customerId: customerId, lastname: lastname}) %>
+    </nav>
+    <div class="container-fluid">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732153593/Title_qgvwqx.png"
+            class="superposed-image">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home_tvjcrx.png"
+                class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+              <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home3_brtol2.png"
+                class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+              <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138334/home2_cqyxe1.png"
+                class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+              <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1732138333/home4_v9x40u.png"
+                class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    <main>
+
+    </main>
+</body>
+</html>

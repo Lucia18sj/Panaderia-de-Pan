@@ -16,13 +16,9 @@ administratorController.getAllProducts = async (req, res) => {
     try {
         const [rows] = await pool.query('CALL GetProducts()');
         console.log("Datos obtenidos:", rows); 
+        console.log("Datos obtenidos:", rows);
         if (rows[0].length === 0) {
-            return res.render('Inventario.ejs', { products: [], 
-                name: req.session.name || 'Administrador',
-                customerId: req.session.customerId || null,
-                email: req.session.email,
-                lastname: req.session.lastname, 
-            }); 
+            console.log("No se encontraron productos activos.");
         }
         return res.render('Inventario.ejs', 
             { products: rows[0],
@@ -33,7 +29,6 @@ administratorController.getAllProducts = async (req, res) => {
          });
     } catch (error) {
         console.error("Error al obtener los productos:", error);
-        return res.status(500).render('error.ejs', { message: "Error al obtener los productos" });
     }
 };
 
@@ -67,7 +62,7 @@ administratorController .updateProduct = async (req, res) => {
     const { id_product } = req.params;
     const { product, price, description, stock, stock_min, image, category } = req.body;
     
-    console.log('Datos recibidos:', req.body); // Verifica los valores recibidos
+    console.log('Datos recibidos:', req.body); 
     
     try {
         await pool.query('CALL UpdateProduct(?, ?, ?, ?, ?, ?, ?, ?)', [
@@ -83,7 +78,7 @@ administratorController .deleteProduct = async (req, res) => {
     const { id_product } = req.params;
     try {
         await pool.query('CALL DeactivateProduct(?)', [id_product]);
-        res.redirect('/api/administrator/inventario'); // Redirige a la página de inventario después de eliminar
+        res.redirect('/api/administrator/inventario');
     } catch (error) {
         res.status(500).json({ message: "An error has occurred", error: error });
     }

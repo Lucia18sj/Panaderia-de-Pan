@@ -13,6 +13,10 @@
 body {
     background-color: #123D44 !important;
 }
+
+.navbar-toggler-icon{
+    color: #F0DED0;
+}
 .superposed-image {
     position: absolute;
     top: 50%; 
@@ -30,31 +34,27 @@ body {
     width: 90%;
     object-fit: cover;
 }
+
 h2{
     font-family: "LemonMilk", sans-serif;
     color: #C7EAF0 !important;
-    font-size: 40px;
+    font-size: 30px;
     margin-left: 25px;
 }
 
-.card-img-top{
-    color: whitesmoke;
-    font-family: "Louis", sans-serif;
-    font-size: 20px;
-}
-
+/*Categorías*/
 
 .card-link {
     text-decoration: none;
-    color: inherit; 
     display: inline-block;
+    width: 20%;
+    padding: 2%;
 }
 .card-link :hover{
     transform: scale(1.02); 
 }
 .card {
-    width: 15rem; 
-    height: 23rem;
+    width: 13rem; 
     margin: auto;
     cursor: pointer; 
     transition: transform 0.2s, box-shadow 0.2s;
@@ -64,8 +64,11 @@ h2{
     transform: scale(1.02); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.card-text{
+    font-size: 20px;
+}
 
-
+/* Destacados*/
 h3{
     font-family: "LemonMilk", sans-serif;
     color: #5D919C !important;
@@ -83,4 +86,49 @@ p{
     width: 90%;
     align-items: center;
     display: flex;
+}
+a i{
+    background-color: #F0DED0;
+    color: #5D919C;
+    font-size: medium;
+    padding: 10px;
+    border-radius: 5px;
+}
+a i:hover{
+    background-color: #123D44;
+    color: #F0DED0;
+}
+
+/*Pantallas Moviles*/
+
+
+@media only screen and (max-width: 768px) {
+    /*Categorías*/
+    .card-text{
+        font-size: 70%;
+    }
+
+    /*Destacadas*/
+    .card .card-title{
+        font-size: 55%;
+        
+    }
+    .card{
+        width: 75px;
+    }
+    .card .card-img-top{
+        height: 40%;
+    }
+    a i{
+        background-color: #F0DED0;
+        color: #5D919C;
+        font-size: x-small;
+        padding: 6px;
+        border-radius: 5px;
+    }
+    a i:hover{
+        background-color: #123D44;
+        color: #F0DED0;
+    }
+
 }

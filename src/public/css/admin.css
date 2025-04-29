@@ -9,7 +9,16 @@
     font-family: "Louis";
     src: url("/font/louisCaffe.ttf") format("opentype");
     font-weight: normal;
-    font-style: normal;
+    font-style: normal;.cart-item{
+    text-decoration: none;
+    color: inherit;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+    margin-bottom: 10px;
+}
 }
 body {
     background-color: #123D44 !important;
@@ -53,16 +62,7 @@ body {
     margin: 0;
 }
 
-.cart-item{
-    text-decoration: none;
-    color: inherit;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 10px;
-    margin-bottom: 10px;
-}
+
 .cart-item:hover {
     background-color: #F0DED0;
     transform: scale(1.02); 

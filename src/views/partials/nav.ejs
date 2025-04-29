@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" href="/css/nav.css">
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img src="https://res.cloudinary.com/dexasecyo/image/upload/v1731965711/logo_zremz9.png" alt="Logo Panadería de Pan" width="20">
+          </a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/us">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/contact">Contacto</a>
+              </li>
+            </ul>
+            <form class="d-flex " role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success me-5" type="submit"><div class="fas fa-search"></div></button>
+            </form>
+            <div class="icons" style="display: flex; align-items: center; gap: 10px;">
+                <% if (name === 'Admin') { %>
+                    <a href="/api/administrator" class="fa-solid fa-user-shield"></a>
+                    <span >Hola, <%= name %></span>
+                <% } else if (name) { %>
+                    <a href="/login" class="fa-solid fa-user"></a>
+                    <span >Hola, <%= name %></span>
+                <% } else { %>
+                    <a href="#" class="fa-solid fa-user-minus"></a>
+                <% } %>
+                <a href="<%= customerId ? `/api/cart/${customerId}` : '/login' %>"><div class="fas fa-shopping-cart"></div></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+</header>
+</html>

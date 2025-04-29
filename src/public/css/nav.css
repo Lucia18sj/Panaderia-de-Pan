@@ -1,0 +1,28 @@
+.navbar {
+    background-color: #704D31 !important;
+}
+
+img{
+    width: 50%;
+}
+
+.nav-item{
+    color: #F0DED0;
+    font-size: larger;
+}
+header .icons a {
+    color: #F0DED0;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+header .icons span {
+    color: #F0DED0;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+.nav-link{
+    color: #F0DED0;
+}
+

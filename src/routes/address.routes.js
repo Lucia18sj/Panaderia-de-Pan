@@ -3,7 +3,6 @@ import {Router} from "express";
 
 const routes = Router();
     routes.post('/insertAddress', addresscontroller.insertAddress);
-    routes.get('/getAllAddress/:idCustomer', addresscontroller.GetCustomerAddresses);
-    routes.get('/getOneAddress/:idAddress', addresscontroller.updateOneAddress);
-    routes.post('/updateAddress/:idAddress', addresscontroller.updateOneAddress);
+    routes.get('/getAllAddress/:idCustomer', addresscontroller.getCustomerAddresses);
+    routes.post('/updateAddress/:idAddress', addresscontroller.updateAddress);
 export default routes;
