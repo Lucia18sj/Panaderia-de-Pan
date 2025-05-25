@@ -21,6 +21,7 @@ productController.getAllFeaturedProducts = async (req, res) => {
     }
 };
 productController.getProducts = async (req,res)=>{
+    
     try {
         const [rows] = await pool.query('CALL GetAllProducts()');
 
@@ -38,33 +39,96 @@ productController.getProducts = async (req,res)=>{
         });
     }
 }
+productController.getProductById = async (req, res) => {
+    const { id_product } = req.params;
 
-productController.insertProduct = async (req, res) => {
-const { id_category, product, price, description, image_url, is_active, stock, stock_min } = req.body;
+    try {
+        const [rows] = await pool.query('CALL getProductById(?)', [id_product]);
 
-try {
-    const [rows] = await pool.query('CALL InsertProduct(?, ?, ?, ?, ?, ?, ?, ?)', [
-    id_category, product, price, description, image_url, is_active, stock, stock_min
-    ]);
-    res.json({ message: 'Product inserted successfully' });
-} catch (error) {
-    res.status(500).json({ message: 'Error inserting product', error });
-}
+        const result = rows[0]; 
+
+        if (!result || result.length === 0) {
+            res.status(404).json({ message: 'No products found' });
+        } else {
+            res.json(result[0]);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({
+            message: "An error has occurred",
+            error: error
+        });
+    }
+};
+
+productController.createProduct = async (req, res) => {
+    const {
+        product,
+        price,
+        description,
+        image_url,
+        is_active,
+        stock,
+        stock_min,
+        category
+    } = req.body;
+
+    try {
+        await pool.query('CALL insert_product(?, ?, ?, ?, ?, ?, ?, ?)', [
+            product,
+            price,
+            description,
+            image_url,
+            is_active,
+            stock,
+            stock_min,
+            category
+        ]);
+
+        res.status(201).json({ message: 'Product inserted successfully' });
+    } catch (error) {
+        console.error('Error inserting product:', error);
+        res.status(500).json({
+            message: 'An error occurred while inserting the product',
+            error
+        });
+    }
 };
 
 productController.updateProduct = async (req, res) => {
-const { id_product } = req.params;
-const { id_category, product, price, description, image_url, is_active, stock, stock_min } = req.body;
+    const { id_product } = req.params;
+    const {
+        product,
+        price,
+        description,
+        image_url,
+        is_active,
+        stock,
+        stock_min,
+        category
+    } = req.body;
 
-try {
-    const [rows] = await pool.query('CALL UpdateProduct(?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-    id_product, id_category, product, price, description, image_url, is_active, stock, stock_min
-    ]);
-    res.json({ message: 'Product updated successfully' });
-} catch (error) {
-    res.status(500).json({ message: 'Error updating product', error });
-}
+    try {
+        await pool.query('CALL update_product(?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            id_product,
+            product,
+            price,
+            description,
+            image_url,
+            is_active,
+            stock,
+            stock_min,
+            category
+        ]);
+
+        res.json({ message: 'Product updated successfully' });
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({
+            message: 'An error occurred while updating the product',
+            error
+        });
+    }
 };
-  
 
 export default productController;

@@ -2,14 +2,13 @@ import {pool} from '../database.js'
 const customerController = {};
 
 customerController.insertCustomer = async (req, res) => {
-    const { name, lastname, email, password, role } = req.body;
+    const { name, lastname, email, password } = req.body;
     try {
-        const [rows] = await pool.query('CALL RegisterCustomer(?, ?, ?, ?, ?)', [
+        const [rows] = await pool.query('CALL RegisterCustomer(?, ?, ?, ?)', [
             name,
             lastname,
             email,
-            password,
-            role
+            password
         ]);
         res.json({
             message: "Customer registered successfully",
@@ -26,6 +25,8 @@ customerController.insertCustomer = async (req, res) => {
 
 customerController.loginCustomer = async (req, res) => {
     const { email, password } = req.body;
+    
+    
     try {
         const [rows] = await pool.query('CALL LoginCustomer(?, ?)', [
             email,
@@ -36,7 +37,8 @@ customerController.loginCustomer = async (req, res) => {
                 message: "Incorrect email or password"
             });
         }
-        res.json(rows[0][0]); // Devolvemos solo el primer cliente encontrado
+        res.json(rows[0][0]);
+        console.log('Respuesta del backend al hacer login:', rows[0][0]);
     } catch (error) {
         res.status(500).json({
             message: "An error occurred during login",
