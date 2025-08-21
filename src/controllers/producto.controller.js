@@ -130,5 +130,22 @@ productController.updateProduct = async (req, res) => {
         });
     }
 };
+productController.deleteProduct = async (req, res) => {
+    const { id_product } = req.params;
+    
+
+
+    try {
+        await pool.query('CALL delete_product(?)', [id_product]);
+
+        res.json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        res.status(500).json({
+            message: 'An error occurred while deleting the product',
+            error
+        });
+    }
+};
 
 export default productController;

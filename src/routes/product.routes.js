@@ -8,5 +8,6 @@ router.get('/getAllFeaturedProducts', productoController.getAllFeaturedProducts)
 router.get('/getProductById/:id_product', productoController.getProductById);
 router.post('/insertProduct', productoController.createProduct);
 router.put('/updateProduct/:id_product', productoController.updateProduct);
+router.delete('/deleteProduct/:id_product', productoController.deleteProduct);
 
 export default router;
